@@ -1,0 +1,35 @@
+<script setup lang="ts">
+const props = defineProps<{
+  link: string | null
+}>();
+</script>
+
+<template>
+  <div>
+    <a :href="link" target="_blank" rel="noopener noreferrer" class="linked-gallery-item" v-if="link">
+      <slot></slot>
+    </a>
+    <div class="gallery-item" v-else>
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.gallery-item,
+.linked-gallery-item {
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  border: 5px solid black;
+  border-radius: 5px;
+  transition: all 200ms ease-in;
+  overflow: hidden;
+  background-color: black;
+}
+.linked-gallery-item:hover {
+  border-color: var(--link);
+}
+</style>
